@@ -10,3 +10,9 @@ const calculate = () => {
     
     document.querySelector("#mean").textContent = mean;
 }
+
+/* Calculate median */
+
+const getMedian = (array) => {
+    const sorted = array.toSorted(function(a,b){return a-b});
+};
