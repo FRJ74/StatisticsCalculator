@@ -22,3 +22,9 @@ const getMedian = (array) => {
                                : sorted[Math.floor(sorted.length / 2)] 
     
 };
+
+/* Calculate Mode */
+
+const getMode = (array) => {
+    const counts = {};
+};
