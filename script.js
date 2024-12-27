@@ -9,6 +9,8 @@ const calculate = () => {
     const mean = getMean(numbers);  
     const median = getMedian(numbers);
 
+    console.log(getMode(numbers));
+
     document.querySelector("#median").textContent = median;  
     document.querySelector("#mean").textContent = mean;
 }
@@ -16,15 +18,19 @@ const calculate = () => {
 /* Calculate median */
 
 const getMedian = (array) => {
-    const sorted = array.toSorted(function(a,b){return a-b});
+    const sorted = array.toSorted((a, b) => a-b);
     
-    return !(array.length % 2) ? getMean([sorted[sorted.length / 2 - 1], sorted[sorted.lenght / 2]])
-                               : sorted[Math.floor(sorted.length / 2)] 
+    return !(sorted.length % 2 === 0) ? getMean([sorted[sorted.length / 2 - 1], sorted[sorted.lenght / 2]])
+                               : sorted[Math.floor(sorted.length / 2)]; 
     
-};
+}
 
 /* Calculate Mode */
 
 const getMode = (array) => {
     const counts = {};
+    array.forEach((el) => {
+        (el in counts) ? counts[el] += 1 : counts[el] = 1;
+    });
+    return counts;
 };
