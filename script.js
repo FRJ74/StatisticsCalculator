@@ -10,12 +10,14 @@ const calculate = () => {
     const median = getMedian(numbers);
     const mode = getMode(numbers);
     const range = getRange(numbers);
+    const variance = getVariance(numbers); 
 
     
     document.querySelector("#median").textContent = median;  
     document.querySelector("#mean").textContent = mean;
     document.querySelector("#mode").textContent = mode;
     document.querySelector("#range").textContent = range;
+    document.querySelector("#variance").textContent = variance;
 }
 
 /* Calculate median */
@@ -50,9 +52,18 @@ const getMode = (array) => {
 
   /* Calculate the variance */
 
-  const getVariance = array => {
+  const getVariance = (array) => {
     const mean = getMean(array);
-    const differences = array.map(el => el - mean);
-    const squaredDifferences = differences.map(el => el ** 2);
-    const sumSquaredDifferences = squaredDifferences.reduce((acc, el) => acc + el, 0);
-  };
+    const variance = array.reduce((acc, el) => {
+      const difference = el - mean;
+      const squared = difference ** 2;
+      return acc + squared;
+    }, 0)  / array.length;
+    return variance;
+  }
+
+/* Calculate the standard deviation */
+
+  const getStandardDeviation = (array) => {
+    const variance = getVariance(array);
+  }
