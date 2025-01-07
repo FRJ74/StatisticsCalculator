@@ -66,4 +66,5 @@ const getMode = (array) => {
 
   const getStandardDeviation = (array) => {
     const variance = getVariance(array);
+    const standardDeviation = Math.pow(variance,1/2);
   }
